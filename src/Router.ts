@@ -6,6 +6,10 @@ export function Router(){
     const publicRoutes = routes.Public.find(route => route.path === path);
 
     if(publicRoutes){
+        if(publicRoutes.path === '/dashboard' && !localStorage.getItem('token')){
+            navigateTo('/');
+            return;
+        }
         publicRoutes.page();
         return;
     }
