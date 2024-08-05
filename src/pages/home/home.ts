@@ -2,6 +2,7 @@ import { LoginForm } from "../../class/login.class";
 import { navigateTo } from "../../Router";
 
 export function home() {
+  let token = 'holaMundoDesdeTypescript';
   const root = document.querySelector(".root") as HTMLDivElement;
 
   root.innerHTML = /*html*/ `
@@ -26,6 +27,7 @@ export function home() {
   singup.addEventListener("click", () => {
     navigateTo("/register");
   });
+  
 
   const buttonLogin = document.getElementById("Blogin") as HTMLButtonElement;
   buttonLogin.addEventListener("click", async () => {
@@ -42,7 +44,10 @@ export function home() {
     }).then((response) => {
       if (response.statusText === 'Created') {
         alert("Sesion iniciada");
+        const email = values.email;
+        sessionStorage.setItem("email",email);
         console.log(response);
+        sessionStorage.setItem("token",token);
         navigateTo("/dashboard");
       } else {
         alert("Error al iniciar sesion");
