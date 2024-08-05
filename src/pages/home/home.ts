@@ -40,13 +40,13 @@ export function home() {
       },
       body: JSON.stringify(values),
     }).then((response) => {
-      if (response.status === 201) {
+      if (response.statusText === 'Created') {
         alert("Sesion iniciada");
-        console.log(response.status);
+        console.log(response);
         navigateTo("/dashboard");
       } else {
         alert("Error al iniciar sesion");
-        console.log(response.status);
+        console.log(response);
       }
     });
   });
