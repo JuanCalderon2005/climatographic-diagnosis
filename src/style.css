@@ -22,7 +22,12 @@ body{
   border-radius: 7px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.3);
 }
-
+.container .registration{
+  display: none;
+}
+#check:checked ~ .registration{
+  display: block;
+}
 #check:checked ~ .login{
   display: none;
 }
@@ -59,7 +64,7 @@ body{
 .form a:hover{
   text-decoration: underline;
 }
-.form input.buttonLogin{
+.form input.button{
   color: #fff;
   background: #009579;
   font-size: 1.2rem;
@@ -69,6 +74,17 @@ body{
   cursor: pointer;
   transition: 0.4s;
 }
-.form input.buttonLogin:hover{
+.form input.button:hover{
   background: #006653;
+}
+.signup{
+  font-size: 17px;
+  text-align: center;
+}
+.signup label{
+  color: #009579;
+  cursor: pointer;
+}
+.signup label:hover{
+  text-decoration: underline;
 }
