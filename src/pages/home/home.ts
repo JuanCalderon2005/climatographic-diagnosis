@@ -45,7 +45,7 @@ export function home() {
       if (response.statusText === 'Created') {
         alert("Sesion iniciada");
         const email = values.email;
-        sessionStorage.setItem("email",email);
+        sessionStorage.setItem("x-user-email", email);
         console.log(response);
         sessionStorage.setItem("token",token);
         navigateTo("/dashboard");

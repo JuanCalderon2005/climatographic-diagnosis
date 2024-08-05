@@ -22,7 +22,7 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 .container1 {
-  width: 500px;
+  width: 100%;
   background-color: #fff;
   border-radius: 8px;
   padding: 20px;
@@ -113,11 +113,17 @@
   text-decoration: underline;
 }
 
+h1 {
+  text-align: center;
+  font-size: 50px;
+}
+
 /* Header Styles */
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
+  height: 100px;
 }
 
 /* Button Styles */
@@ -148,6 +154,13 @@ dialog {
   background-color: #006653;
   color: #fff;
   cursor: pointer;
+}
+
+.printPosts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .dialog {
@@ -188,7 +201,8 @@ dialog {
   margin-left: 10px;
 }
 .post {
-  width: 500px;
+  gap: 20px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
