@@ -4,7 +4,7 @@ export interface IDataLogin {
 }
 
 export interface IPosts {
-  id ?: string;
+  id?: number;
   title: string;
   body: string;
   creationDate: string;

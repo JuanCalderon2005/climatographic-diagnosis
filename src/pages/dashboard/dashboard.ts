@@ -1,4 +1,5 @@
 import { navigateTo } from "../../Router";
+import { PostsManager } from "../../class/PostManager.class";
 import { getAllposts } from "../../class/getAllPosts.class";
 import { IPosts } from "../../interfaces/IData";
 
@@ -12,7 +13,8 @@ export function dashboard() {
     </div>
     <div class="container1">
       <div class="container0">
-          <dialog id="dialog">
+
+    <dialog id="dialog">
     <form id="postForm">
       <h2>¿Estás seguro de que quieres publicar?</h2>
       <p>Una vez que publiques, no podrás deshacer esta acción.</p>
@@ -60,8 +62,10 @@ export function dashboard() {
       </menu>
     </form>
   </dialog>
+
+
   <dialog id="editDialog">
-    <form>
+    <form class='editForm'>
       <h2>¿Estás seguro de que quieres editar?</h2>
       <p>Una vez que edites, no podrás deshacer esta acción.</p>
 
@@ -108,6 +112,7 @@ export function dashboard() {
       </menu>
     </form>
   </dialog>
+
   <div class='printPosts'></div>
       
       `;
@@ -166,7 +171,7 @@ export function dashboard() {
     console.log(post);
 
     fetch(
-      `https://api.languagetool.org/v2/check?text=${title.value}&language=es`,
+      `https://api.languagetool.org/v2/check?text=${post}&language=es`,
       {
         method: "POST",
       }
@@ -192,93 +197,6 @@ export function dashboard() {
     });
   });
 
-  const posts = new getAllposts();
-  posts.getAllPosts().then((data) => {
-    const container = document.querySelector(".printPosts") as HTMLDivElement;
-    data.forEach((post) => {
-      container.innerHTML += /*html*/ `
-            <div class="post">
-                <h2><strong>${post.title}</strong></h2>
-                <p><strong>Creación:</strong> ${post.creationDate}</p>
-                <p><strong>Publicación:</strong> ${post.estimatedPublicationDate}</p>
-                <p><strong>Plataforma:</strong> ${post.platform}</p>
-                <p><strong>Calidad de la Publicación:</strong> ${post.approvalPercentage}</p>
-                <input type='button' class="edit-button" value='editar'></button>
-                </div>
-            `;
-
-      const editButton = document.querySelectorAll(
-        ".edit-button"
-      ) as NodeListOf<Element>;
-
-      editButton.forEach((button) => {
-        button.addEventListener("click", () => {
-          const editDialog = document.getElementById(
-            "editDialog"
-          ) as HTMLDialogElement;
-          editDialog.showModal();
-
-          const editTitle = document.getElementById(
-            "editTitle"
-          ) as HTMLInputElement;
-          const editBody = document.getElementById(
-            "editBody"
-          ) as HTMLInputElement;
-          const editCreationDate = document.getElementById(
-            "editCreationDate"
-          ) as HTMLInputElement;
-          const editCreator = document.getElementById(
-            "editCreator"
-          ) as HTMLInputElement;
-          const editEstimatedPublicationDate = document.getElementById(
-            "editEstimatedPublicationDate"
-          ) as HTMLInputElement;
-          const editStatus = document.getElementById(
-            "editStatus"
-          ) as HTMLInputElement;
-          const editApprovalPercentage = document.getElementById(
-            "editApprovalPercentage"
-          ) as HTMLInputElement;
-          const editCorrections = document.getElementById(
-            "editCorrections"
-          ) as HTMLInputElement;
-          const editPlatform = document.getElementById(
-            "editPlatform"
-          ) as HTMLSelectElement;
-          const editPostUrl = document.getElementById(
-            "editPostUrl"
-          ) as HTMLInputElement;
-          const editMultimediaUrl = document.getElementById(
-            "editMultimediaUrl"
-          ) as HTMLInputElement;
-
-          post.id = post.id;
-
-          editTitle.value = post.title;
-          editBody.value = post.body;
-          editCreationDate.value = post.creationDate;
-          editCreator.value = post.creator;
-          editEstimatedPublicationDate.value = post.estimatedPublicationDate;
-          editStatus.value = post.status;
-          editApprovalPercentage.value = post.approvalPercentage.toString();
-          editCorrections.value = post.corrections;
-          editPlatform.value = post.platform;
-          editPostUrl.value = post.postUrl;
-          editMultimediaUrl.value = post.multimediaUrl;
-
-          const id = post.id;
-          console.log(id);
-
-          const formEditPost = document.getElementById(
-            "editDialog"
-          ) as HTMLFormElement;
-
-          const confirmEdit = document.getElementById(
-            "confirmEdit"
-          ) as HTMLButtonElement;
-          console.log(confirmEdit);
-        });
-      });
-    });
-  });
+  const postsManager = new PostsManager('https://api-posts.codificando.xyz/posts', '.printPosts');
+  postsManager.getAllPosts().then((data) => postsManager.renderPosts(data));
 }
