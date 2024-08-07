@@ -210,3 +210,98 @@ dialog {
   padding: 10px;
   border: 1px solid #ddd;
 }
+
+/* Estilos para el diálogo */
+#editDialog {
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el formulario */
+.editForm {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos para las etiquetas */
+.editForm label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Estilos para las entradas de texto */
+.editForm input[type="text"],
+.editForm input[type="number"],
+.editForm input[type="url"],
+.editForm select {
+  margin-top: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+/* Estilos para el menú de botones */
+.editForm menu {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Estilos para los botones */
+.editForm button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+#postForm menu {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#postForm button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+#cancelEdit {
+  background-color: #f44336;
+  color: white;
+}
+
+#confirmEdit {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#cancel{
+  background-color: #f44336;
+  color: white;
+}
+
+#confirm{
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Estilos para el encabezado y el párrafo */
+.editForm h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.editForm p {
+  color: #666;
+}
